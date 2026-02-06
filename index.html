@@ -14,21 +14,17 @@
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
 
 <style>
-body { margin:0; font-family: Arial, sans-serif; background:#000; color:#fff; overflow:hidden; }
+body { margin:0; font-family: Arial, sans-serif; background:#000; color:#fff; }
 
 /* Preloader */
 .preloader {
   position:fixed; inset:0; background:#000; display:flex;
   align-items:center; justify-content:center; z-index:9999;
+  transition: opacity 0.8s ease;
 }
-.preloader h1 { font-size:28px; letter-spacing:6px; opacity:0; }
+.preloader.hidden { opacity:0; pointer-events:none; }
 
-/* Cursor */
-.cursor {
-  position:fixed; width:18px; height:18px; border:1px solid #fff;
-  border-radius:50%; pointer-events:none; transform:translate(-50%,-50%);
-  z-index:9998;
-}
+.preloader h1 { font-size:28px; letter-spacing:6px; }
 
 /* Header */
 .header {
@@ -47,7 +43,7 @@ body { margin:0; font-family: Arial, sans-serif; background:#000; color:#fff; ov
 /* Sections */
 .section {
   min-height:100vh; padding:140px 20px 60px;
-  max-width:1100px; margin:auto; opacity:0;
+  max-width:1100px; margin:auto; opacity:1;
 }
 
 .video {
@@ -61,8 +57,7 @@ body { margin:0; font-family: Arial, sans-serif; background:#000; color:#fff; ov
 
 <body>
 
-<div class="preloader"><h1>REC702</h1></div>
-<div class="cursor"></div>
+<div class="preloader" id="preloader"><h1>REC702</h1></div>
 
 <div class="header">
   <div>REC702</div>
@@ -102,29 +97,19 @@ function scrollToSection(id){
   document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
-// Cursor
-const cursor = document.querySelector(".cursor");
-window.addEventListener("mousemove", e => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-});
+// Safe preloader removal
+function hidePreloader() {
+  const p = document.getElementById("preloader");
+  if (!p) return;
+  p.classList.add("hidden");
+  setTimeout(() => p.remove(), 800);
+}
 
-// Lenis
-const lenis = new Lenis();
-function raf(t){ lenis.raf(t); requestAnimationFrame(raf); }
-requestAnimationFrame(raf);
+// Hide when page fully loads
+window.addEventListener("load", hidePreloader);
 
-// Preloader animation
-gsap.to(".preloader h1",{opacity:1, duration:1});
-gsap.to(".preloader",{opacity:0, delay:1.5, duration:1, onComplete:()=>{
-  document.body.style.overflow="auto";
-  document.querySelector(".preloader").remove();
-}});
-
-// Reveal sections
-gsap.utils.toArray(".section").forEach(sec=>{
-  gsap.to(sec,{opacity:1, duration:1.4, scrollTrigger:{trigger:sec, start:"top 80%"}});
-});
+// Fallback timeout (always removes after 2.5s)
+setTimeout(hidePreloader, 2500);
 </script>
 
 </body>
