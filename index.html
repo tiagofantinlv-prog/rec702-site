@@ -2,68 +2,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>REC702</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #000;
-      color: #fff;
-      text-align: center;
-    }
-    .hero {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      background: #000;
-    }
-    h1 {
-      font-size: 64px;
-      letter-spacing: 4px;
-      margin-bottom: 20px;
-    }
-    .videos {
-      padding: 60px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-    iframe {
-      width: 100%;
-      height: 500px;
-      margin-bottom: 60px;
-      border: none;
-    }
-    footer {
-      padding: 40px;
-      font-size: 12px;
-      opacity: 0.6;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>REC702</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+/* HEADER */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  font-size: 12px;
+  letter-spacing: 3px;
+  z-index: 10;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  filter: brightness(0.35);
+}
+
+.hero h1 {
+  font-size: 72px;
+  letter-spacing: 8px;
+  font-weight: 300;
+  z-index: 2;
+}
+
+/* FILMS */
+.section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 120px 20px;
+}
+
+.video {
+  position: relative;
+  padding-top: 56.25%;
+  margin-bottom: 100px;
+}
+
+.video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* CONTACT */
+.contact {
+  text-align: center;
+  padding: 140px 20px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.contact h2 {
+  font-weight: 300;
+  letter-spacing: 4px;
+}
+
+.contact a {
+  display: block;
+  margin-top: 20px;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.7;
+}
+
+.contact a:hover {
+  opacity: 1;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  font-size: 11px;
+  opacity: 0.4;
+  padding: 40px 0 60px;
+}
+</style>
 </head>
+
 <body>
 
-  <section class="hero">
-    <h1>REC702</h1>
-    <p>Cinematic Film Studio</p>
-  </section>
+<div class="header">
+  <div>REC702</div>
+  <div>TIAGO FANTIN</div>
+</div>
 
-  <section class="videos">
-    <iframe src="https://www.youtube.com/embed/gRxZIbfmBwc" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/0fXs1QS92Cg" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/029TflxhHUc" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/GSm1zmUqW6k" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/hDSKL7kzs6w" allowfullscreen></iframe>
-    <iframe src="https://www.youtube.com/embed/1CUKMSWwfe4" allowfullscreen></iframe>
-  </section>
+<section class="hero">
+  <iframe src="https://www.youtube.com/embed/gRxZIbfmBwc?autoplay=1&mute=1&controls=0&loop=1&playlist=gRxZIbfmBwc&modestbranding=1&rel=0"></iframe>
+  <h1>CINEMATIC FILMS</h1>
+</section>
 
-  <footer>
-    © 2026 REC702. All rights reserved.
-  </footer>
+<section class="section">
+
+  <div class="video"><iframe src="https://www.youtube.com/embed/gRxZIbfmBwc?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
+  <div class="video"><iframe src="https://www.youtube.com/embed/0fXs1QS92Cg?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
+  <div class="video"><iframe src="https://www.youtube.com/embed/029TflxhHUc?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
+  <div class="video"><iframe src="https://www.youtube.com/embed/GSm1zmUqW6k?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
+  <div class="video"><iframe src="https://www.youtube.com/embed/hDSKL7kzs6w?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
+  <div class="video"><iframe src="https://www.youtube.com/embed/1CUKMSWwfe4?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
+
+</section>
+
+<section class="contact">
+  <h2>CONTACT</h2>
+  <a href="mailto:Tiagofantinlv@gmail.com">Tiagofantinlv@gmail.com</a>
+  <a href="https://instagram.com/tiagofantin" target="_blank">@tiagofantin</a>
+</section>
+
+<div class="footer">
+© 2026 REC702
+</div>
 
 </body>
 </html>
