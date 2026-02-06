@@ -10,7 +10,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-<!-- Lenis Smooth Scroll -->
+<!-- Lenis -->
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
 
 <style>
@@ -19,7 +19,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   background: #000;
   color: #fff;
-  overflow-x: hidden;
   cursor: none;
 }
 
@@ -32,7 +31,6 @@ body {
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  transition: transform 0.15s ease, opacity 0.3s;
   z-index: 9999;
 }
 
@@ -41,19 +39,37 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  text-align: center;
-  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 30px;
   font-size: 12px;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   z-index: 20;
   background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+}
+
+.logo {
+  font-weight: 600;
+}
+
+.menu {
+  position: fixed;
+  top: 80px;
+  left: 30px;
+  font-size: 14px;
+  line-height: 2;
+  opacity: 0.7;
+}
+
+.menu div:hover {
+  opacity: 1;
+  cursor: pointer;
 }
 
 /* Hero */
 .hero {
   position: relative;
   height: 100vh;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,8 +90,8 @@ body {
   font-size: 70px;
   letter-spacing: 8px;
   font-weight: 300;
-  z-index: 2;
   opacity: 0;
+  z-index: 2;
 }
 
 /* Section */
@@ -85,7 +101,6 @@ body {
   padding: 120px 20px;
 }
 
-/* Video */
 .video {
   position: relative;
   padding-top: 56.25%;
@@ -102,30 +117,12 @@ body {
   border: none;
 }
 
-/* Parallax effect */
-.parallax {
-  transform: translateY(0px);
-}
-
 /* Contact */
 .contact {
   text-align: center;
   padding: 160px 20px;
   border-top: 1px solid rgba(255,255,255,0.08);
   opacity: 0;
-}
-
-.contact h2 {
-  font-weight: 300;
-  letter-spacing: 4px;
-}
-
-.contact a {
-  display: block;
-  margin-top: 20px;
-  color: #fff;
-  text-decoration: none;
-  opacity: 0.7;
 }
 
 .footer {
@@ -140,7 +137,17 @@ body {
 <body>
 
 <div class="cursor"></div>
-<div class="header">REC702 — TIAGO FANTIN</div>
+
+<div class="header">
+  <div class="logo">REC702</div>
+  <div>TIAGO FANTIN</div>
+</div>
+
+<div class="menu">
+  <div>+ Elopements</div>
+  <div>+ Interviews</div>
+  <div>+ UFC Athletes</div>
+</div>
 
 <section class="hero">
   <iframe src="https://www.youtube.com/embed/gRxZIbfmBwc?autoplay=1&mute=1&controls=0&loop=1&playlist=gRxZIbfmBwc&modestbranding=1&rel=0"></iframe>
@@ -148,60 +155,44 @@ body {
 </section>
 
 <section class="section">
-
-  <div class="video parallax"><iframe src="https://www.youtube.com/embed/gRxZIbfmBwc?controls=0&modestbranding=1&rel=0"></iframe></div>
-  <div class="video parallax"><iframe src="https://www.youtube.com/embed/0fXs1QS92Cg?controls=0&modestbranding=1&rel=0"></iframe></div>
-  <div class="video parallax"><iframe src="https://www.youtube.com/embed/029TflxhHUc?controls=0&modestbranding=1&rel=0"></iframe></div>
-  <div class="video parallax"><iframe src="https://www.youtube.com/embed/GSm1zmUqW6k?controls=0&modestbranding=1&rel=0"></iframe></div>
-  <div class="video parallax"><iframe src="https://www.youtube.com/embed/hDSKL7kzs6w?controls=0&modestbranding=1&rel=0"></iframe></div>
-  <div class="video parallax"><iframe src="https://www.youtube.com/embed/1CUKMSWwfe4?controls=0&modestbranding=1&rel=0"></iframe></div>
-
+  <div class="video"><iframe src="https://www.youtube.com/embed/gRxZIbfmBwc?controls=0&modestbranding=1&rel=0"></iframe></div>
+  <div class="video"><iframe src="https://www.youtube.com/embed/0fXs1QS92Cg?controls=0&modestbranding=1&rel=0"></iframe></div>
+  <div class="video"><iframe src="https://www.youtube.com/embed/029TflxhHUc?controls=0&modestbranding=1&rel=0"></iframe></div>
 </section>
 
 <section class="contact">
   <h2>CONTACT</h2>
-  <a href="mailto:Tiagofantinlv@gmail.com">Tiagofantinlv@gmail.com</a>
-  <a href="https://instagram.com/tiagofantin" target="_blank">@tiagofantin</a>
+  <p>Tiagofantinlv@gmail.com</p>
 </section>
 
 <div class="footer">© 2026 REC702</div>
 
 <script>
-// Custom cursor
+// Cursor
 const cursor = document.querySelector(".cursor");
 window.addEventListener("mousemove", e => {
   cursor.style.left = e.clientX + "px";
   cursor.style.top = e.clientY + "px";
 });
 
-// Lenis smooth scroll
-const lenis = new Lenis({ smooth: true });
+// Lenis
+const lenis = new Lenis();
 function raf(time) {
   lenis.raf(time);
   requestAnimationFrame(raf);
 }
 requestAnimationFrame(raf);
 
-// GSAP animations
+// GSAP
 gsap.registerPlugin(ScrollTrigger);
-
 gsap.to(".hero h1", { opacity: 1, duration: 2 });
 
-gsap.utils.toArray(".video").forEach((video, i) => {
+gsap.utils.toArray(".video").forEach(video => {
   gsap.to(video, {
     opacity: 1,
     y: 0,
     duration: 1.4,
-    ease: "power3.out",
     scrollTrigger: { trigger: video, start: "top 85%" }
-  });
-
-  gsap.to(video, {
-    y: -80,
-    scrollTrigger: {
-      trigger: video,
-      scrub: true
-    }
   });
 });
 
