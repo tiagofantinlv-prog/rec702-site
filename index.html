@@ -73,13 +73,20 @@
       margin-top: 24px;
     }
 
+    /* COLUMN VIDEO LAYOUT (2 videos stacked per column) */
     .videos {
       padding: 120px 6vw 100px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      max-width: 1200px;
+      gap: 40px;
+      max-width: 1400px;
       margin: auto;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
     }
 
     .video-wrapper {
@@ -106,7 +113,7 @@
       color: #777;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1000px) {
       .videos { grid-template-columns: repeat(2, 1fr); }
     }
 
@@ -135,14 +142,24 @@
     <div class="underline"></div>
   </section>
 
+  <!-- 3 columns, 2 stacked videos each -->
   <section class="videos">
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/gRxZIbfmBwc?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/0fXs1QS92Cg?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/029TflxhHUc?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
 
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/GSm1zmUqW6k?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/hDSKL7kzs6w" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/1CUKMSWwfe4" allowfullscreen></iframe></div>
+    <div class="column">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/gRxZIbfmBwc?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/GSm1zmUqW6k?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
+    </div>
+
+    <div class="column">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/0fXs1QS92Cg?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/hDSKL7kzs6w" allowfullscreen></iframe></div>
+    </div>
+
+    <div class="column">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/029TflxhHUc?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/1CUKMSWwfe4" allowfullscreen></iframe></div>
+    </div>
+
   </section>
 
   <footer>
