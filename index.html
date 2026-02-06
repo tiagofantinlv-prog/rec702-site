@@ -4,51 +4,39 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>REC702</title>
-
-<!-- GSAP -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-<!-- Lenis -->
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+<title>REC702 — Tiago Fantin</title>
 
 <style>
 body { margin:0; font-family: Arial, sans-serif; background:#000; color:#fff; }
 
-/* Preloader */
-.preloader {
-  position:fixed; inset:0; background:#000; display:flex;
-  align-items:center; justify-content:center; z-index:9999;
-  transition: opacity 0.8s ease;
-}
-.preloader.hidden { opacity:0; pointer-events:none; }
-
-.preloader h1 { font-size:28px; letter-spacing:6px; }
-
 /* Header */
 .header {
-  position:fixed; top:0; width:100%; display:flex;
-  justify-content:space-between; padding:20px 30px;
+  position:fixed; top:0; width:100%; padding:20px 30px;
   font-size:12px; letter-spacing:3px; z-index:20;
 }
+
+/* Combined logo */
+.logo { font-weight:600; }
 
 /* Side menu */
 .menu {
   position:fixed; top:100px; left:30px; line-height:2;
 }
-.menu div { opacity:0.6; cursor:pointer; }
-.menu div:hover { opacity:1; }
+.menu div { opacity:0.6; cursor:pointer; transition:opacity .3s, transform .3s; }
+.menu div:hover { opacity:1; transform:translateX(4px); }
 
 /* Sections */
 .section {
   min-height:100vh; padding:140px 20px 60px;
-  max-width:1100px; margin:auto; opacity:1;
+  max-width:1100px; margin:auto;
 }
 
 .video {
   position:relative; padding-top:56.25%; margin-bottom:120px;
+  transition: transform .4s ease, filter .4s ease;
 }
+.video:hover { transform:scale(1.02); filter:brightness(1.2); }
+
 .video iframe { position:absolute; inset:0; width:100%; height:100%; border:none; }
 
 .contact { text-align:center; padding:160px 20px; opacity:0.6; }
@@ -57,17 +45,14 @@ body { margin:0; font-family: Arial, sans-serif; background:#000; color:#fff; }
 
 <body>
 
-<div class="preloader" id="preloader"><h1>REC702</h1></div>
-
 <div class="header">
-  <div>REC702</div>
-  <div>TIAGO FANTIN</div>
+  <div class="logo">REC702 — TIAGO FANTIN</div>
 </div>
 
 <div class="menu">
-  <div onclick="scrollToSection('elopements')">+ Elopements</div>
-  <div onclick="scrollToSection('interviews')">+ Interviews</div>
-  <div onclick="scrollToSection('ufc')">+ UFC Athletes</div>
+  <div onclick="scrollToSection('elopements')" onmouseenter="playHover()">+ Elopements</div>
+  <div onclick="scrollToSection('interviews')" onmouseenter="playHover()">+ Interviews</div>
+  <div onclick="scrollToSection('ufc')" onmouseenter="playHover()">+ UFC Athletes</div>
 </div>
 
 <!-- Sections -->
@@ -91,25 +76,23 @@ body { margin:0; font-family: Arial, sans-serif; background:#000; color:#fff; }
   <p>Tiagofantinlv@gmail.com</p>
 </section>
 
+<!-- Subtle hover sound -->
+<audio id="hoverSound" preload="auto">
+  <source src="https://cdn.jsdelivr.net/gh/terkelg/experiments/audio/click.mp3" type="audio/mpeg">
+</audio>
+
 <script>
-// Scroll function
 function scrollToSection(id){
   document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
-// Safe preloader removal
-function hidePreloader() {
-  const p = document.getElementById("preloader");
-  if (!p) return;
-  p.classList.add("hidden");
-  setTimeout(() => p.remove(), 800);
+function playHover(){
+  const s = document.getElementById("hoverSound");
+  if(!s) return;
+  s.currentTime = 0;
+  s.volume = 0.2;
+  s.play().catch(()=>{});
 }
-
-// Hide when page fully loads
-window.addEventListener("load", hidePreloader);
-
-// Fallback timeout (always removes after 2.5s)
-setTimeout(hidePreloader, 2500);
 </script>
 
 </body>
