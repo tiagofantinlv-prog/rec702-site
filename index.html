@@ -5,15 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>rec702 — Tiago Fantin</title>
 
-  <!-- Google Font (clean cinematic sans-serif) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       background: #000;
@@ -22,7 +17,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* NAVBAR */
     header {
       position: fixed;
       top: 0;
@@ -36,11 +30,7 @@
       z-index: 1000;
     }
 
-    .logo {
-      font-weight: 300;
-      letter-spacing: 2px;
-      font-size: 14px;
-    }
+    .logo { font-weight: 300; letter-spacing: 2px; font-size: 14px; }
 
     nav a {
       margin-left: 28px;
@@ -51,11 +41,8 @@
       transition: opacity 0.3s ease;
     }
 
-    nav a:hover {
-      opacity: 0.6;
-    }
+    nav a:hover { opacity: 0.6; }
 
-    /* HERO */
     .hero {
       height: 100vh;
       display: flex;
@@ -86,13 +73,12 @@
       margin-top: 24px;
     }
 
-    /* VIDEO GRID */
     .videos {
       padding: 120px 6vw 100px;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
-      max-width: 1400px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      max-width: 1600px;
       margin: auto;
     }
 
@@ -113,7 +99,6 @@
       border: none;
     }
 
-    /* FOOTER */
     footer {
       text-align: center;
       padding: 60px 20px;
@@ -121,26 +106,19 @@
       color: #777;
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .videos {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
+    @media (max-width: 1200px) {
+      .videos { grid-template-columns: repeat(2, 1fr); }
+    }
 
-      header {
-        padding: 20px 24px;
-      }
-
-      nav a {
-        margin-left: 16px;
-      }
+    @media (max-width: 700px) {
+      .videos { grid-template-columns: 1fr; }
+      header { padding: 20px 24px; }
+      nav a { margin-left: 16px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- NAVBAR -->
   <header>
     <div class="logo">rec702</div>
     <nav>
@@ -151,33 +129,24 @@
     </nav>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="rec">rec702</div>
     <h1>Tiago Fantin</h1>
     <div class="underline"></div>
   </section>
 
-  <!-- VIDEOS -->
   <section class="videos">
-    <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/gRxZIbfmBwc?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe>
-    </div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/gRxZIbfmBwc?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/0fXs1QS92Cg?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/029TflxhHUc?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/GSm1zmUqW6k?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
 
-    <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/0fXs1QS92Cg?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe>
-    </div>
-
-    <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/029TflxhHUc?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe>
-    </div>
-
-    <div class="video-wrapper">
-      <iframe src="https://www.youtube.com/embed/GSm1zmUqW6k?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe>
-    </div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/hDSKL7kzs6w" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/1CUKMSWwfe4" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/A4YEAEOD2Ng" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/Vk9rlGnPH5U" allowfullscreen></iframe></div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     © 2026 rec702 — Tiago Fantin. All rights reserved.
   </footer>
