@@ -6,12 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>REC702</title>
 
+<!-- GSAP for cinematic animations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
 <style>
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   background: #000;
   color: #fff;
+  overflow-x: hidden;
 }
 
 /* HEADER */
@@ -19,15 +24,15 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 40px;
+  text-align: center;
+  padding: 20px;
   font-size: 12px;
-  letter-spacing: 3px;
-  z-index: 10;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+  letter-spacing: 4px;
+  z-index: 20;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
 }
 
+/* HERO */
 .hero {
   position: relative;
   height: 100vh;
@@ -49,10 +54,11 @@ body {
 }
 
 .hero h1 {
-  font-size: 72px;
+  font-size: 70px;
   letter-spacing: 8px;
   font-weight: 300;
   z-index: 2;
+  opacity: 0;
 }
 
 /* FILMS */
@@ -65,7 +71,9 @@ body {
 .video {
   position: relative;
   padding-top: 56.25%;
-  margin-bottom: 100px;
+  margin-bottom: 120px;
+  opacity: 0;
+  transform: translateY(60px);
 }
 
 .video iframe {
@@ -81,6 +89,7 @@ body {
   text-align: center;
   padding: 140px 20px;
   border-top: 1px solid rgba(255,255,255,0.08);
+  opacity: 0;
 }
 
 .contact h2 {
@@ -96,11 +105,8 @@ body {
   opacity: 0.7;
 }
 
-.contact a:hover {
-  opacity: 1;
-}
+.contact a:hover { opacity: 1; }
 
-/* FOOTER */
 .footer {
   text-align: center;
   font-size: 11px;
@@ -112,24 +118,21 @@ body {
 
 <body>
 
-<div class="header" style="justify-content:center;">
-  <div>REC702 — TIAGO FANTIN</div>
-</div>
-
+<div class="header">REC702 — TIAGO FANTIN</div>
 
 <section class="hero">
   <iframe src="https://www.youtube.com/embed/gRxZIbfmBwc?autoplay=1&mute=1&controls=0&loop=1&playlist=gRxZIbfmBwc&modestbranding=1&rel=0"></iframe>
-  <h1></h1>
+  <h1>DIRECTED BY TIAGO FANTIN</h1>
 </section>
 
 <section class="section">
 
-  <div class="video"><iframe src="https://www.youtube.com/embed/gRxZIbfmBwc?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
-  <div class="video"><iframe src="https://www.youtube.com/embed/0fXs1QS92Cg?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
-  <div class="video"><iframe src="https://www.youtube.com/embed/029TflxhHUc?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
-  <div class="video"><iframe src="https://www.youtube.com/embed/GSm1zmUqW6k?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
-  <div class="video"><iframe src="https://www.youtube.com/embed/hDSKL7kzs6w?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
-  <div class="video"><iframe src="https://www.youtube.com/embed/1CUKMSWwfe4?controls=0&modestbranding=1&rel=0" allowfullscreen></iframe></div>
+  <div class="video"><iframe src="https://www.youtube.com/embed/gRxZIbfmBwc?controls=0&modestbranding=1&rel=0"></iframe></div>
+  <div class="video"><iframe src="https://www.youtube.com/embed/0fXs1QS92Cg?controls=0&modestbranding=1&rel=0"></iframe></div>
+  <div class="video"><iframe src="https://www.youtube.com/embed/029TflxhHUc?controls=0&modestbranding=1&rel=0"></iframe></div>
+  <div class="video"><iframe src="https://www.youtube.com/embed/GSm1zmUqW6k?controls=0&modestbranding=1&rel=0"></iframe></div>
+  <div class="video"><iframe src="https://www.youtube.com/embed/hDSKL7kzs6w?controls=0&modestbranding=1&rel=0"></iframe></div>
+  <div class="video"><iframe src="https://www.youtube.com/embed/1CUKMSWwfe4?controls=0&modestbranding=1&rel=0"></iframe></div>
 
 </section>
 
@@ -139,9 +142,38 @@ body {
   <a href="https://instagram.com/tiagofantin" target="_blank">@tiagofantin</a>
 </section>
 
-<div class="footer">
-© 2026 REC702
-</div>
+<div class="footer">© 2026 REC702</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// Hero title fade in
+gsap.to(".hero h1", {opacity: 1, duration: 2, ease: "power2.out"});
+
+// Videos reveal on scroll
+gsap.utils.toArray(".video").forEach(video => {
+  gsap.to(video, {
+    opacity: 1,
+    y: 0,
+    duration: 1.4,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: video,
+      start: "top 85%"
+    }
+  });
+});
+
+// Contact fade
+gsap.to(".contact", {
+  opacity: 1,
+  duration: 1.5,
+  scrollTrigger: {
+    trigger: ".contact",
+    start: "top 85%"
+  }
+});
+</script>
 
 </body>
 </html>
